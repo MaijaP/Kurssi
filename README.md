@@ -18,9 +18,10 @@ Hello world!
 
 ```PHP
 <?php
-echo Hello world!
+echo Hello world!;
 ?>
 ```
+
 
 ```powershell
 Write-Host "Hello World!"
