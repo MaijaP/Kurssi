@@ -15,9 +15,22 @@ sudo apt-get -y install docker-ce
 sudo docker run hello-world
 
 
-#sudo apt-get -y install git
-#sudo mkdir /var/tmp/demo
-#cd /var/tmp/demo
-#sudo git clone https://github.com/PT-Jaloit/DevOps-Lab.git
-#sudo chmod u+x DevOps-Lab/Harjoitus\ 3/Vagrant/test.sh
-#sudo DevOps-Lab/Harjoitus\ 3/Vagrant/test.sh
+sudo apt-get -y install git
+sudo mkdir /var/tmp/demo
+cd /var/tmp/demo
+sudo git clone https://github.com/docker-training/webapp.git
+
+# Docker imagen koonti Dockerfilestä
+sudo docker build -t testwebapp .
+
+# Docker imagen käynnistys
+sudo docker run -d -p 80:5000 testwebapp
+
+sudo chmod u+x DevOps-Lab/Harjoitus\ 3/Vagrant/test.sh
+sudo DevOps-Lab/Harjoitus\ 3/Vagrant/test.sh
+
+ADD ./webapp /opt/webapp
+WORKDIR /opt/webapp
+EXPOSE 5000
+CMD ["python", "app.py"]
+
